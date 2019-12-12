@@ -9,6 +9,13 @@ module.exports = {
     mode: "development",
     devtool: "source-map",
     plugins: [
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            Popper: "popper.js",
+            JQuery: "jquery",
+            Util: "exports-loader?Util!bootstrap/js/dist/util",
+            Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/util"
+        }),
         new htmlWebpackPlugin({
             favicon: paths.appFavicon,
             template: paths.appTemplate
@@ -32,6 +39,32 @@ module.exports = {
                         ]
                     }
                 }
+            },
+            {
+                // look for css or scss files
+                test: /\.(css|scss)$/,
+                // in styles directory
+                include: [paths.appStyles, /(node_modules)/],
+                use: [
+                    {
+                        loader: "style-loader"
+                    },
+                    {
+                        loader: "css-loader",
+                        options: {
+                            importLoaders: 1,
+                            modules: {
+                                localIdentName: "[local]" // localIdentName: "[name]__[local]__[hash:base64:5]"
+                            }
+                        },
+                    },
+                    {
+                        loader: "sass-loader",
+                        options: {
+                            sourceMap: true
+                        }
+                    }
+                ]
             }
         ]
     }

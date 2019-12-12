@@ -11,7 +11,7 @@ const resolveApp = relativePath => {
 
 module.exports = {
     appSource: resolveApp("src"),
-    appStyles: resolveApp("src/styles"),
+    appStyles: resolveApp("src/sass"),
     appJavaScriptSource: resolveApp("src/js"),
     appAssets: resolveApp("src/assets"),
     appIndexJs: resolveApp("src/js/index.js"),

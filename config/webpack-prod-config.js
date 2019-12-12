@@ -35,6 +35,31 @@ module.exports = {
                         ]
                     }
                 }
+            },
+            {
+                // look for css or scss files
+                test: /\.(css|scss)$/,
+                // in styles directory
+                include: paths.appStyles,
+                use: [
+                    {
+                        loader: "style-loader"
+                    },
+                    {
+                        loader: "css-loader",
+                        options: {
+                            importLoaders: 1,
+                            modules: true,
+                            localIdentName: "[name]__[local]__[hash:base64:5]"
+                        }
+                    },
+                    {
+                        loader: "sass-loader",
+                        options: {
+                            sourceMap: true
+                        }
+                    }
+                ]
             }
         ]
     }

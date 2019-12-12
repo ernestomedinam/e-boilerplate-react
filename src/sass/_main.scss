@@ -1,0 +1,66 @@
+*, *::after, *::before {
+    margin: 0;
+    padding: 0;
+}
+
+// declare variables and mixins; if enough of them are
+// declared, create a 'base' folder and files for them.
+
+// variables
+$e-background-color: rgba($color: #5296A5, $alpha: 1);
+$e-second-color: rgba($color: #F6C28B, $alpha: 1);
+
+// mixins
+@mixin build-flex($flow, $wrap) {
+    display: flex;
+    flex-flow: $flow;
+    flex-wrap: $wrap;
+}
+
+// declare animations and utility classes that will be
+// used by many components and views; if enough of them
+// are declared, create a 'helpers' folder and files for
+// them.
+
+// animations
+@keyframes load8 {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+// utility classes
+.view-loader {
+    position: absolute;
+    top: calc(50% - 4rem);
+    left: calc(50% - 4rem);
+    width: 8rem;
+    height: 8rem;
+    border: 1rem solid rgba($color: #333745, $alpha: 0.4);
+    border-left: 1rem solid #333745;
+    border-radius: 50%;
+    animation: load8 1s infinite linear;
+    transition: opacity 0.3s;
+}
+
+// uncomment code ahead to edit boostrap styles
+// and variables, like changing theme colors.
+// do not add code for this purpose under the @import
+// as it will not be taken into account.
+// also, if you add bootstrap scss here, you need to
+// comment bootstrap import on index.js, as it would
+// otherwise retain priority over this import.
+
+// change theme warning color from orange to primary blue
+// $theme-colors: (
+//     "warning": #0074D9
+// );
+
+// import boostrap scss
+// @import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+
+
