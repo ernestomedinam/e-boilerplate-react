@@ -1,5 +1,10 @@
 @import "../main";
 
 .test-p-class {
-    color: #7D7C84;
+    color: #FFF;
+}
+
+body {
+    background-color: $e-background-color !important;
+    color: $e-second-color !important;
 }
