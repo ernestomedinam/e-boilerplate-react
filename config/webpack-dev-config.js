@@ -1,6 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const paths = require("./paths.js");
+// const PrettierPlugin = require("prettier-webpack-plugin");
 
 const htmlWebpackPlugin = require("html-webpack-plugin");
 
@@ -9,6 +10,7 @@ module.exports = {
     mode: "development",
     devtool: "source-map",
     plugins: [
+        new webpack.HotModuleReplacementPlugin(),
         new webpack.ProvidePlugin({
             $: "jquery",
             Popper: "popper.js",
@@ -20,6 +22,16 @@ module.exports = {
             favicon: paths.appFavicon,
             template: paths.appTemplate
         }),
+        // new PrettierPlugin({
+        //     parser: "babel",
+        //     printWidth: 80,
+        //     tabWidth: 4,
+        //     useTabs: true,
+        //     bracketSpacing: true,
+        //     extensions: [ ".js", ".jsx" ],
+        //     semi: true,
+        //     encoding: "utf-8"
+        // })
     ],
     module: {
         rules: [
@@ -63,6 +75,27 @@ module.exports = {
                         options: {
                             sourceMap: true
                         }
+                    }
+                ]
+            },
+            {
+                // handle image files
+                test: /\.(png|svg|jpeg|jpg|gif)$/,
+                use: [
+                    {
+                        loader: "file-loader",
+                        options: {
+                            name: "[path][name].[ext]"
+                        }
+                    }
+                ]
+            },
+            {
+                // handle font files
+                test: /\.woff($|\?)|\.woff2($|\?)\.ttf($|\?)\.eot($|\?)/,
+                use: [
+                    {
+                        loader: "file-loader"
                     }
                 ]
             }

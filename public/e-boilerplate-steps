@@ -1,0 +1,18 @@
+1. git init, create README.md
+2. create LICENSE
+3. npm init, complete package.json
+4. add .gitignore
+5. install react react-dom as deps; webpack webpack-cli webpack-dev-server as dev-deps
+6. install babel-loader @babel/core @babel/preset-env @babel/preset-react html-webpack-plugin as dev-deps
+7. create src/js src/assets; create index.js and favicon.ico
+8. create html template and complete basic webpack files configuration
+9. webpack configuration based on config folder with paths.js, wbpk-dev-server.js, wbpk-dev-config.js and wbpk-prod-config.js
+10. create Home view and add scripts to package.json; dev server should be running with react on localhost:3000
+11. install style-loader css-loader sass-loader node-sass as dev-deps
+12. install bootstrap react-bootstrap jquery popper.js
+13. configure rules for css/scss files and webpackProvidePlugin
+14. create src/sass and _main.scss; import boostrap from index.js or bootstrap scss from _main.scss
+15. create Layout.js and complete Home to import Home.scss, which imports _main.scss
+16. create loader styles and render Layout based on boolean loader control state changed after children mountin simulation (setTimeout 2secs)
+17. server should be running with bootstrap and custom styles, loading for 2 seconds before rendering home view
+
