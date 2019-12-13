@@ -17,3 +17,4 @@
 17. server should be running with bootstrap and custom styles, loading for 2 seconds before rendering home view
 18. install file-loader eslint eslint-loader eslint-plugin-react prettier prettier-webpack-plugin as dev-dep and prop-types as dep
 19. create .eslintrc config file and add eslint-loader in webpack, as well as prettier webpack plugin with rules
+20. install eslint-plugin-react-hooks as dev-dep and add configuration on eslintrc.json file

@@ -1,5 +1,7 @@
 import React from "react";
 import "../../sass/views/Home.scss";
+import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 
 const Home = props => {
 	return (
@@ -10,6 +12,11 @@ const Home = props => {
 					"view's very own scss file."}
 			</p>
 			<button className="btn btn-primary">I do nothing!</button>
+			<Link to="/about">
+				<Button variant="success" className="mx-5">
+					{"I do!"}
+				</Button>
+			</Link>
 		</div>
 	);
 };

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Home from "./views/Home";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import About from "./views/About";
 
 const Layout = props => {
 	const [viewIsReady, setViewIsReady] = useState(false);
@@ -10,11 +12,18 @@ const Layout = props => {
 				setViewIsReady(true);
 			}, 2000);
 		}
-	}, []);
+	}, [viewIsReady]);
 	return (
-		<React.Fragment>
-			{viewIsReady ? <Home /> : <div className="view-loader"></div>}
-		</React.Fragment>
+		<BrowserRouter>
+			{viewIsReady ? (
+				<Switch>
+					<Route exact path="/" component={Home} />
+					<Route path="/about" component={About} />
+				</Switch>
+			) : (
+				<div className="view-loader"></div>
+			)}
+		</BrowserRouter>
 	);
 };
 
