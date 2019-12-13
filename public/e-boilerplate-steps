@@ -15,4 +15,5 @@
 15. create Layout.js and complete Home to import Home.scss, which imports _main.scss
 16. create loader styles and render Layout based on boolean loader control state changed after children mountin simulation (setTimeout 2secs)
 17. server should be running with bootstrap and custom styles, loading for 2 seconds before rendering home view
-
+18. install file-loader eslint eslint-loader eslint-plugin-react prettier prettier-webpack-plugin as dev-dep and prop-types as dep
+19. create .eslintrc config file and add eslint-loader in webpack, as well as prettier webpack plugin with rules

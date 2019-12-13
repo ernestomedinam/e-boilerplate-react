@@ -11,7 +11,11 @@ const Layout = props => {
 			}, 2000);
 		}
 	}, []);
-	return <React.Fragment>{viewIsReady ? <Home /> : <div className="view-loader"></div>}</React.Fragment>;
+	return (
+		<React.Fragment>
+			{viewIsReady ? <Home /> : <div className="view-loader"></div>}
+		</React.Fragment>
+	);
 };
 
 export default Layout;

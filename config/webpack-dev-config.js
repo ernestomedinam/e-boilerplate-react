@@ -1,7 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const paths = require("./paths.js");
-// const PrettierPlugin = require("prettier-webpack-plugin");
+const PrettierPlugin = require("prettier-webpack-plugin");
 
 const htmlWebpackPlugin = require("html-webpack-plugin");
 
@@ -22,16 +22,16 @@ module.exports = {
             favicon: paths.appFavicon,
             template: paths.appTemplate
         }),
-        // new PrettierPlugin({
-        //     parser: "babel",
-        //     printWidth: 80,
-        //     tabWidth: 4,
-        //     useTabs: true,
-        //     bracketSpacing: true,
-        //     extensions: [ ".js", ".jsx" ],
-        //     semi: true,
-        //     encoding: "utf-8"
-        // })
+        new PrettierPlugin({
+            parser: "babel",
+            printWidth: 80,
+            tabWidth: 4,
+            useTabs: true,
+            bracketSpacing: true,
+            extensions: [ ".js", ".jsx" ],
+            semi: true,
+            encoding: "utf-8"
+        })
     ],
     module: {
         rules: [
@@ -41,16 +41,25 @@ module.exports = {
                 // in the source directory
                 include: path.resolve(paths.appJavaScriptSource),
                 exclude: /(node_modules)/,
-                use: {
-                    // babel loader for transpiling js files
-                    loader: "babel-loader",
-                    options: {
-                        presets: [
-                            "@babel/preset-env",
-                            "@babel/preset-react"
-                        ]
+                use: [
+                    {
+                        // babel loader for transpiling js files
+                        loader: "babel-loader",
+                        options: {
+                            presets: [
+                                "@babel/preset-env",
+                                "@babel/preset-react"
+                            ]
+                        }
+                    },
+                    {
+                        // eslint loader for code lintin
+                        loader: "eslint-loader",
+                        options: {
+                            enforce: "pre"
+                        }
                     }
-                }
+                ]
             },
             {
                 // look for css or scss files
