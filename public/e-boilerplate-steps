@@ -19,3 +19,6 @@
 19. create .eslintrc config file and add eslint-loader in webpack, as well as prettier webpack plugin with rules
 20. install eslint-plugin-react-hooks as dev-dep and add configuration on eslintrc.json file
 21. install react-router-dom and add BrowserRouter to Layout as well as new view About.js
+22. create folders and files for AppContext and flux.js; complete components and imoprt in Layout
+23. create forders and files for a loaderReducer to make Layouts loader work as useReducer example
+24. install regenerator-runtime as dep and add import on index
