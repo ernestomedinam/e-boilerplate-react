@@ -18,3 +18,4 @@
 18. install file-loader eslint eslint-loader eslint-plugin-react prettier prettier-webpack-plugin as dev-dep and prop-types as dep
 19. create .eslintrc config file and add eslint-loader in webpack, as well as prettier webpack plugin with rules
 20. install eslint-plugin-react-hooks as dev-dep and add configuration on eslintrc.json file
+21. install react-router-dom and add BrowserRouter to Layout as well as new view About.js

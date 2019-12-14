@@ -6,5 +6,7 @@
 
 body {
     background-color: $e-background-color !important;
-    color: $e-second-color !important;
+    h1 {
+        color: $e-second-color !important;
+    }
 }
