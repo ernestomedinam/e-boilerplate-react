@@ -17,5 +17,5 @@ module.exports = {
     appIndexJs: resolveApp("src/js/index.js"),
     appPublic: resolveApp("public"),
     appTemplate: resolveApp("src/index.html"),
-    appFavicon: resolveApp("src/assets/icons/favicon.ico")
+    appFavIcon: resolveApp("src/assets/icons/favicon.ico")
 }

@@ -1,7 +1,8 @@
-const htmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 const webpack = require("webpack");
 const paths = require("./paths.js");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const PrettierPlugin = require("prettier-webpack-plugin");
 
 module.exports = {
     entry: paths.appIndexJs,
@@ -12,9 +13,26 @@ module.exports = {
     },
     mode: "production",
     plugins: [
-        new htmlWebpackPlugin({
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            Popper: "popper.js",
+            JQuery: "jquery",
+            Util: "exports-loader?Util!bootstrap/js/dist/util",
+            Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/util"
+        }),
+        new HtmlWebpackPlugin({
             favicon: paths.appFavicon,
             template: paths.appTemplate
+        }),
+        new PrettierPlugin({
+            parser: "babel",
+            printWidth: 80,
+            tabWidth: 4,
+            useTabs: true,
+            bracketSpacing: true,
+            extensions: [ ".js", ".jsx" ],
+            semi: true,
+            encoding: "utf-8"
         })
     ],
     module: {

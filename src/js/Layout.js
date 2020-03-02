@@ -9,6 +9,7 @@ const Layout = props => {
 	// const [viewIsReady, setViewIsReady] = useState(false);
 	const [state, dispatch] = useReducer(loaderReducer, initLoaderState);
 	useEffect(() => {
+		console.log("here");
 		if (!state.viewIsReady) {
 			// this is simulating children components mounting.
 			setTimeout(() => {

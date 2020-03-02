@@ -2,8 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 const paths = require("./paths.js");
 const PrettierPlugin = require("prettier-webpack-plugin");
-
-const htmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
     entry: paths.appIndexJs,
@@ -18,8 +17,8 @@ module.exports = {
             Util: "exports-loader?Util!bootstrap/js/dist/util",
             Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/util"
         }),
-        new htmlWebpackPlugin({
-            favicon: paths.appFavicon,
+        new HtmlWebpackPlugin({
+            favicon: paths.appFavIcon,
             template: paths.appTemplate
         }),
         new PrettierPlugin({
@@ -73,11 +72,11 @@ module.exports = {
                     {
                         loader: "css-loader",
                         options: {
-                            importLoaders: 1,
                             modules: {
                                 localIdentName: "[local]" // localIdentName: "[name]__[local]__[hash:base64:5]"
-                            }
-                        },
+                            },
+                            importLoaders: 1
+                        }
                     },
                     {
                         loader: "sass-loader",
