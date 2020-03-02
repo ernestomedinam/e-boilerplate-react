@@ -1,6 +1,8 @@
 tasks:
-  - init: npm install
-    command: npm audit fix
+  - init: |
+      npm install
+      npm audit fix
+    command: npm run gitpod
 ports:
   - port: 3000
     onOpen: open-preview
