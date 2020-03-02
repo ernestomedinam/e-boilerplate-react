@@ -1,7 +1,5 @@
-ports:
-  - port: 3000
-    onOpen: open-browser
 tasks:
   - init: npm install
-    command: npm audit fix
-    command: npm run start
+ports:
+  - port: 3000
+    onOpen: open-preview
