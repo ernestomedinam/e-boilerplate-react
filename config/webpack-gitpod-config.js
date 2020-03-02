@@ -9,8 +9,17 @@ module.exports = {
     mode: "development",
     devtool: "source-map",
     devServer: {
-        allowedHosts: ["localhost:3000", ".gitpod.io"]
+        disableHostCheck: true,
+        allowedHosts: ["localhost", "0.0.0.0", ".gitpod.io"],
+        host: "0.0.0.0",
+        port: 3000,
+        hot: true,
+        open: true,
+        contentBase: [paths.appAssets, paths.appPublic],
+        watchContentBase: true,
+        historyApiFallback: true,
     },
+    
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.ProvidePlugin({
