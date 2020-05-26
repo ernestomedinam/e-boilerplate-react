@@ -116,16 +116,19 @@ const Contest = props => {
 	return (
 		<div className="container pt-3">
 			<div className="row">
-				<div className="col-md-4 p-3">
-					<Parameters
-						parameters={parameters}
-						setParameters={setParameters}
-						currentRound={stats.currentRound}
-					/>
-				</div>
-				<div className="col-md-8 p-3 align-self-center">
-					<Stats stats={stats} />
-				</div>
+				{stats.currentRound == 0 ? (
+					<div className="col-md-4 p-3">
+						<Parameters
+							parameters={parameters}
+							setParameters={setParameters}
+							currentRound={stats.currentRound}
+						/>
+					</div>
+				) : (
+					<div className="col-md-8 p-3 align-self-center">
+						<Stats stats={stats} />
+					</div>
+				)}
 			</div>
 			<div className="row">
 				<Form
