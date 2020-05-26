@@ -46,6 +46,7 @@ const Contest = props => {
 	const addPointToPlayer = useCallback(
 		playerId => {
 			if (stats.status != "ended") {
+				setPlaying(false);
 				let updatedPlayers = players.map((player, index) => {
 					if (player.id == playerId) {
 						return {
@@ -148,13 +149,13 @@ const Contest = props => {
 						<Form.Control
 							disabled={stats.currentRound != 0}
 							type="input"
-							placeholder="name"
+							placeholder="Name"
 							value={newPlayer}
 							onChange={e => setNewPlayer(e.target.value)}
 						/>
 					</Form.Group>
 				</Form>
-				<div className="col-4 d-flex align-items-end">
+				<div className="col-md-4 col-6 d-flex align-items-end justify-content-md-start justify-content-center">
 					<Button
 						form="newPlayer"
 						className="mb-3"
@@ -165,7 +166,7 @@ const Contest = props => {
 						{"Add player!"}
 					</Button>
 				</div>
-				<div className="col-md-4 col-8 d-flex align-items-end justify-content-center">
+				<div className="col-md-4 col-6 d-flex align-items-end justify-content-center">
 					{stats.currentRound == 0 ? (
 						<Button
 							className="mb-3"
@@ -219,9 +220,11 @@ const Contest = props => {
 			</div>
 			{/* <Stats />
             <Players /> */}
-			<Link to="/" replace>
-				<Button variant="primary">{"Go home!"}</Button>
-			</Link>
+			<div className="row justify-content-end pr-3">
+				<Link to="/" replace>
+					<Button variant="primary">{"Go home!"}</Button>
+				</Link>
+			</div>
 		</div>
 	);
 };

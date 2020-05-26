@@ -27,9 +27,9 @@ const Players = ({
 				<Table striped bordered>
 					<thead className="bg-white">
 						<tr>
-							<th>{"id"}</th>
-							<th>{"name"}</th>
-							<th>{"points"}</th>
+							<th>{"Id"}</th>
+							<th>{"Name"}</th>
+							<th>{"Points"}</th>
 						</tr>
 					</thead>
 					<tbody className="white-fg">

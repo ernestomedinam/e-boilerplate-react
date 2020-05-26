@@ -10,10 +10,19 @@ const Parameters = ({ parameters, setParameters, currentRound }) => {
 					<InputGroup key={index} className="mb-3">
 						<InputGroup.Prepend>
 							<InputGroup.Text id="basic-addon3">
-								{key}
+								{key
+									.split(/(?=[A-Z])/)
+									.join(" ")[0]
+									.toUpperCase() +
+									key
+										.split(/(?=[A-Z])/)
+										.join(" ")
+										.slice(1)
+										.toLowerCase()}
 							</InputGroup.Text>
 						</InputGroup.Prepend>
 						<FormControl
+							className="text-right"
 							id={key}
 							disabled={currentRound != 0}
 							aria-describedby={key}
