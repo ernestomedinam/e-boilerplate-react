@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import About from "./views/About";
 import AppContextProvider from "./contexts/AppContext";
 import loaderReducer, { initLoaderState } from "./reducers/loaderReducer";
+import Contest from "./views/Contest";
 
 const Layout = props => {
 	// const [viewIsReady, setViewIsReady] = useState(false);
@@ -17,7 +18,7 @@ const Layout = props => {
 				});
 			}, 2000);
 		}
-	}, []);
+	}, [state.viewIsReady]);
 	return (
 		<BrowserRouter>
 			<AppContextProvider>
@@ -25,6 +26,7 @@ const Layout = props => {
 					<Switch>
 						<Route exact path="/" component={Home} />
 						<Route path="/about" component={About} />
+						<Route path="/contest" component={Contest} />
 					</Switch>
 				) : (
 					<div className="view-loader"></div>

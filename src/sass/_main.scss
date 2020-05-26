@@ -1,6 +1,7 @@
 *, *::after, *::before {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 // declare variables and mixins; if enough of them are
@@ -46,6 +47,17 @@ $e-second-color: rgba($color: #F6C28B, $alpha: 1);
     transition: opacity 0.3s;
 }
 
+.disabled-e {
+    * {
+        color: gray;
+    }
+}
+.white-fg {
+    * {
+        color: white;
+    }
+}
+
 // uncomment code ahead to edit boostrap styles
 // and variables, like changing theme colors.
 // do not add code for this purpose under the @import
@@ -60,4 +72,6 @@ $e-second-color: rgba($color: #F6C28B, $alpha: 1);
 // );
 
 // import boostrap scss
-// @import "../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+@import "./views/Players.scss";

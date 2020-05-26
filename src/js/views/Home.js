@@ -20,6 +20,11 @@ const Home = props => {
 					{"I do!"}
 				</Button>
 			</Link>
+			<Link to="/contest">
+				<Button variant="outline-success" className="mx-2">
+					{"Go contest!"}
+				</Button>
+			</Link>
 			<Row className="justify-content-center">
 				<Card className="my-3">
 					<Card.Body>

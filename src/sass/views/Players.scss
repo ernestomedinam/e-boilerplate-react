@@ -1,0 +1,23 @@
+.win-round {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.3rem; 
+    background-color: rgba($color: white, $alpha: 0.5);
+    .enabled:hover {
+        background-color: white;
+    }
+    &::after, &::before {
+        content: " ";
+        position: absolute;
+        height: 1.2rem;
+        width: 0.3rem;
+        background-color: $success;
+        border-radius: 0.1rem; 
+    }
+    &::after {
+        transform: translate(0.85rem, 0.5rem) rotate(90deg);
+    }
+    &::before {
+        transform: translate(0.85rem, 0.5rem);
+    }
+}
