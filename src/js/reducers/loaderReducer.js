@@ -1,5 +1,5 @@
 export const initLoaderState = {
-	viewIsReady: false
+	viewIsReady: false,
 };
 
 const loaderReducer = (state, action) => {
@@ -7,12 +7,12 @@ const loaderReducer = (state, action) => {
 		case "SHOW_LOADER":
 			return {
 				...state,
-				viewIsReady: false
+				viewIsReady: false,
 			};
 		case "HIDE_LOADER":
 			return {
 				...state,
-				viewIsReady: true
+				viewIsReady: true,
 			};
 	}
 };

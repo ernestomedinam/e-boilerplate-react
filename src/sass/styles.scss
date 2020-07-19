@@ -1,0 +1,30 @@
+@import "./main";
+
+// vendors
+// uncomment code ahead to edit boostrap styles
+// and variables, like changing theme colors.
+// do not add code for this purpose under the @import
+// as it will not be taken into account.
+// also, if you add bootstrap scss here, you need to
+// comment bootstrap import on index.js, as it would
+// otherwise retain priority over this import.
+
+// change theme success color from orange to primary blue
+// $theme-colors: (
+//     "success": #0074D9
+// );
+
+// import boostrap scss
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+.form-control, .input-group-text {
+    background-color: $e-background-color;
+    color: white;
+}
+.input-group-text {
+    background-color: $e-foreground-color;
+}
+
+// views and components
+@import "./views/home";
+@import "./components/player";

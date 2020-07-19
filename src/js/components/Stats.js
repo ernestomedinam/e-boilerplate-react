@@ -19,7 +19,7 @@ const Stats = ({ stats }) => {
 			<div className="col-md-4 text-center">
 				<p>{stats.roundsLeft + " rounds left."}</p>
 				<h5>{"Winners:"}</h5>
-				{stats.winners.map(winner => {
+				{stats.winners.map((winner) => {
 					return (
 						<p key={winner.id}>
 							<strong>{winner.name}</strong>
@@ -34,5 +34,5 @@ const Stats = ({ stats }) => {
 export default Stats;
 
 Stats.propTypes = {
-	stats: PropTypes.object
+	stats: PropTypes.object,
 };

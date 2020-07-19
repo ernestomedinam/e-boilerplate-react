@@ -1,8 +1,21 @@
+image:
+  file: .gitpod.Dockerfile
+
 tasks:
-  - init: |
-      npm install
+  - name: git terminal
+    command: |
+      gp await-port 3000
+      git status
+  - name: dev server
+    before: |
+      sed "/PUBLIC/d" -i .env
+      echo "PUBLIC=$(gp url 3000)/" >> .env
+    init: npm install
+    command: |
       npm audit fix
-    command: npm run gitpod
+      npm run gitpod
+    openMode: tab-after
+    
 ports:
   - port: 3000
     onOpen: open-preview

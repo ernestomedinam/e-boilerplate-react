@@ -27,10 +27,10 @@ const Parameters = ({ parameters, setParameters, currentRound }) => {
 							disabled={currentRound != 0}
 							aria-describedby={key}
 							value={parameters[key]}
-							onChange={e => {
+							onChange={(e) => {
 								setParameters({
 									...parameters,
-									[key]: e.target.value
+									[key]: e.target.value,
 								});
 							}}
 						/>
@@ -46,5 +46,5 @@ export default Parameters;
 Parameters.propTypes = {
 	parameters: PropTypes.object,
 	setParameters: PropTypes.func,
-	currentRound: PropTypes.number
+	currentRound: PropTypes.number,
 };

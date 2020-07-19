@@ -4,17 +4,17 @@ import getState from "./flux.js";
 
 export const AppContext = createContext(null);
 
-const AppContextProvider = props => {
+const AppContextProvider = (props) => {
 	const [state, setState] = useState(
 		getState({
 			getStore: () => state.store,
 			getActions: () => state.actions,
-			setStore: updatedStore => {
+			setStore: (updatedStore) => {
 				setState({
 					store: Object.assign(state.store, updatedStore),
-					actions: { ...state.actions }
+					actions: { ...state.actions },
 				});
-			}
+			},
 		})
 	);
 
@@ -28,5 +28,5 @@ const AppContextProvider = props => {
 export default AppContextProvider;
 
 AppContextProvider.propTypes = {
-	children: PropTypes.node.isRequired
+	children: PropTypes.node.isRequired,
 };

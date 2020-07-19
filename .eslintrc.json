@@ -25,12 +25,12 @@
     "indent": "off",
     "react/jsx-indent": "off",
     "react/jsx-indent-props": "off",
-    "comma-dangle": [1, {
-        "arrays": "never",
-        "objects": "never",
+    "comma-dangle": [1 , {
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
         "imports": "never",
         "exports": "never",
-        "functions": "ignore"
+        "functions": "never"
     }],
     "react/prop-types": [2],
     "react-hooks/rules-of-hooks": "error",

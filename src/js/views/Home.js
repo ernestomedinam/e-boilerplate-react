@@ -1,16 +1,15 @@
 import React, { useContext } from "react";
-import "../../sass/views/Home.scss";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
-import { Row, Card } from "react-bootstrap";
+import { Row, Card, Dropdown, Container } from "react-bootstrap";
 import { AppContext } from "../contexts/AppContext";
 
-const Home = props => {
+const Home = (props) => {
 	const { store, actions } = useContext(AppContext);
 	return (
-		<div className="text-center my-5">
+		<Container className="text-center my-5">
 			<h1 className="display-3">Hey! Welcome to rEact!!</h1>
-			<p className="test-p-class">
+			<p className="test-p-class mb-4">
 				{"Color for this text if provided by this " +
 					"view's very own scss file."}
 			</p>
@@ -26,7 +25,7 @@ const Home = props => {
 				</Button>
 			</Link>
 			<Row className="justify-content-center">
-				<Card className="my-3">
+				<Card className="mt-5 mb-3">
 					<Card.Body>
 						<Card.Title>{"This is a random greeting:"}</Card.Title>
 						<Card.Text>
@@ -37,11 +36,23 @@ const Home = props => {
 			</Row>
 			<Button
 				variant="info"
-				onClick={e => actions.changeCurrentGreeting()}
+				onClick={(e) => actions.changeCurrentGreeting()}
 			>
 				{"Change greeting!"}
 			</Button>
-		</div>
+			<Row className="justify-content-center py-3 my-3">
+				<Dropdown>
+					<Dropdown.Toggle variant="light" id="example">
+						{"Dropdown example"}
+					</Dropdown.Toggle>
+					<Dropdown.Menu>
+						<Dropdown.Item>{"Option 1"}</Dropdown.Item>
+						<Dropdown.Item>{"Option 2"}</Dropdown.Item>
+						<Dropdown.Item>{"Option 3"}</Dropdown.Item>
+					</Dropdown.Menu>
+				</Dropdown>
+			</Row>
+		</Container>
 	);
 };
 

@@ -6,7 +6,7 @@ import AppContextProvider from "./contexts/AppContext";
 import loaderReducer, { initLoaderState } from "./reducers/loaderReducer";
 import Contest from "./views/Contest";
 
-const Layout = props => {
+const Layout = (props) => {
 	// const [viewIsReady, setViewIsReady] = useState(false);
 	const [state, dispatch] = useReducer(loaderReducer, initLoaderState);
 	useEffect(() => {
@@ -14,7 +14,7 @@ const Layout = props => {
 			// this is simulating children components mounting.
 			setTimeout(() => {
 				dispatch({
-					type: "HIDE_LOADER"
+					type: "HIDE_LOADER",
 				});
 			}, 2000);
 		}

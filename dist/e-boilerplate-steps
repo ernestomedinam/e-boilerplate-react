@@ -1,0 +1,27 @@
+1. git init, create README.md
+2. create LICENSE
+3. npm init, complete package.json
+4. add .gitignore
+5. create gitpod.yml and gitpod.Dockerfile, config terminals and .env creation with gitpod url for port 3000
+6. install react react-dom as deps; webpack webpack-cli webpack-dev-server webpack-merge as dev-deps
+7. install babel-loader @babel/core @babel/preset-env @babel/preset-react html-webpack-plugin as dev-deps
+8. create src/js src/assets; create index.js and favicon.ico
+9. create html template and complete basic webpack files configuration, require dotend and use gp url port 3000 as public prop for devServer webpack module
+10. webpack configuration based on config folder with paths.js, wbpk-dev-server.js, wbpk-dev-config.js and wbpk-prod-config.js
+11. create Home view and add scripts to package.json; dev server should be running with react on localhost:3000
+12. install style-loader css-loader sass-loader node-sass as dev-deps
+13. install bootstrap react-bootstrap
+14. configure rules for css/scss files
+15. create src/sass and styles.scss and _main.scss; import bootstrap scss and _main on styles.scss
+16. create Layout.js and complete Home, import styles from index.js
+17. create loader styles and render Layout based on boolean loader control state changed after children mountin simulation (setTimeout 2secs)
+18. server should be running with bootstrap and custom styles, loading for 2 seconds before rendering home view
+19. install file-loader eslint eslint-loader eslint-plugin-react prettier prettier-webpack-plugin as dev-dep and prop-types as dep
+20. create .eslintrc config file and add eslint-loader in webpack, as well as prettier webpack plugin with rules
+21. install eslint-plugin-react-hooks as dev-dep and add configuration on eslintrc.json file
+22. install react-router-dom and add BrowserRouter to Layout as well as new view About.js
+23. create folders and files for AppContext and flux.js; complete components and imoprt in Layout
+24. create folders and files for a loaderReducer to make Layouts loader work as useReducer example
+25. install @babel/runtime and @babel/plugin-transform-runtime; add in webpack config
+26. install @babel/plugin-proposal-class-properties; add in webpack config
+27. add contest view as example for state and context features

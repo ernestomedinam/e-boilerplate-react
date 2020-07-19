@@ -6,21 +6,21 @@ import Stats from "../components/Stats";
 import Players from "../components/Players";
 import useInterval from "../components/useInterval";
 
-const Contest = props => {
+const Contest = (props) => {
 	const [playing, setPlaying] = useState(false);
 	const [newPlayer, setNewPlayer] = useState("");
 	const [parameters, setParameters] = useState({
 		rounds: 1,
 		winners: 1,
 		pointsPerRound: 1,
-		secondsForRound: 60
+		secondsForRound: 60,
 	});
 	const [stats, setStats] = useState({
 		currentRound: 0,
 		secondsLeft: 0,
 		roundsLeft: 0,
 		winners: [],
-		status: "planning"
+		status: "planning",
 	});
 	const [players, setPlayers] = useState([]);
 	const createGame = useCallback(() => {
@@ -29,7 +29,7 @@ const Contest = props => {
 			secondsLeft: parseInt(parameters.secondsForRound),
 			roundsLeft: parseInt(parameters.rounds) - 1,
 			winners: [],
-			status: "created"
+			status: "created",
 		});
 	}, [parameters]);
 	const comparePoints = (a, b) => {
@@ -44,7 +44,7 @@ const Contest = props => {
 		return result;
 	};
 	const addPointToPlayer = useCallback(
-		playerId => {
+		(playerId) => {
 			if (stats.status != "ended") {
 				setPlaying(false);
 				let updatedPlayers = players.map((player, index) => {
@@ -53,7 +53,7 @@ const Contest = props => {
 							...player,
 							points:
 								parseInt(player.points) +
-								parseInt(parameters.pointsPerRound)
+								parseInt(parameters.pointsPerRound),
 						};
 					} else {
 						return player;
@@ -69,7 +69,7 @@ const Contest = props => {
 					setStats({
 						...stats,
 						winners: winners,
-						status: "ended"
+						status: "ended",
 					});
 				} else {
 					setStats({
@@ -77,7 +77,7 @@ const Contest = props => {
 						currentRound: stats.currentRound + 1,
 						secondsLeft: parseInt(parameters.secondsForRound),
 						roundsLeft: stats.roundsLeft - 1,
-						winners: winners
+						winners: winners,
 					});
 				}
 			}
@@ -91,7 +91,7 @@ const Contest = props => {
 			} else {
 				setStats({
 					...stats,
-					secondsLeft: stats.secondsLeft - 1
+					secondsLeft: stats.secondsLeft - 1,
 				});
 			}
 		},
@@ -101,7 +101,7 @@ const Contest = props => {
 		let updatedPlayers = players.map((player, index) => {
 			return {
 				...player,
-				points: 0
+				points: 0,
 			};
 		});
 		setPlayers(updatedPlayers);
@@ -110,7 +110,7 @@ const Contest = props => {
 			secondsLeft: 0,
 			roundsLeft: 0,
 			winners: [],
-			status: "planning"
+			status: "planning",
 		});
 	}, [players]);
 	return (
@@ -134,7 +134,7 @@ const Contest = props => {
 				<Form
 					id="newPlayer"
 					className="col-md-4"
-					onSubmit={e => {
+					onSubmit={(e) => {
 						e.preventDefault();
 						e.stopPropagation();
 						setPlayers([
@@ -142,8 +142,8 @@ const Contest = props => {
 							{
 								id: players.length + 1,
 								name: newPlayer,
-								points: 0
-							}
+								points: 0,
+							},
 						]);
 						setNewPlayer("");
 					}}
@@ -154,7 +154,7 @@ const Contest = props => {
 							type="input"
 							placeholder="Name"
 							value={newPlayer}
-							onChange={e => setNewPlayer(e.target.value)}
+							onChange={(e) => setNewPlayer(e.target.value)}
 						/>
 					</Form.Group>
 				</Form>
@@ -175,7 +175,7 @@ const Contest = props => {
 							className="mb-3"
 							type="button"
 							variant="success"
-							onClick={e => createGame(e)}
+							onClick={(e) => createGame(e)}
 						>
 							{"Start game!"}
 						</Button>
@@ -186,7 +186,7 @@ const Contest = props => {
 									className="mb-3 mx-2"
 									type="button"
 									variant="primary"
-									onClick={e => startOver()}
+									onClick={(e) => startOver()}
 								>
 									{"Start over"}
 								</Button>
@@ -196,7 +196,7 @@ const Contest = props => {
 									type="button"
 									variant="success"
 									disabled={stats.secondsLeft == 0}
-									onClick={e => {
+									onClick={(e) => {
 										if (playing) {
 											setPlaying(false);
 											// stopTimer(e);
@@ -218,11 +218,10 @@ const Contest = props => {
 					setPlayer={setPlayers}
 					playing={playing}
 					currentRound={stats.currentRound}
+					status={stats.status}
 					clickHandler={addPointToPlayer}
 				/>
 			</div>
-			{/* <Stats />
-            <Players /> */}
 			<div className="row justify-content-end pr-3">
 				<Link to="/" replace>
 					<Button variant="primary">{"Go home!"}</Button>

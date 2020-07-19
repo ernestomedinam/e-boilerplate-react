@@ -5,9 +5,10 @@ import { Table } from "react-bootstrap";
 const Players = ({
 	players,
 	setPlayers,
-	currentRound,
 	playing,
-	clickHandler = () => {}
+	currentRound,
+	status,
+	clickHandler = () => {},
 }) => {
 	const comparePoints = (a, b) => {
 		const aPoints = a.points;
@@ -25,7 +26,7 @@ const Players = ({
 		<React.Fragment>
 			<div className="col">
 				<Table striped bordered>
-					<thead className="bg-white">
+					<thead className="text-white">
 						<tr>
 							<th>{"Id"}</th>
 							<th>{"Name"}</th>
@@ -42,13 +43,21 @@ const Players = ({
 										{player.points}
 										<span
 											className={
-												currentRound != 0 && !playing
+												currentRound != 0 &&
+												!playing &&
+												status != "ended"
 													? "mr-2 win-round enabled"
 													: "mr-2 win-round"
 											}
-											onClick={e =>
-												clickHandler(player.id)
-											}
+											onClick={(e) => {
+												if (
+													currentRound != 0 &&
+													!playing &&
+													status != "ended"
+												) {
+													clickHandler(player.id);
+												}
+											}}
 										></span>
 									</td>
 								</tr>
@@ -67,6 +76,7 @@ Players.propTypes = {
 	players: PropTypes.array,
 	setPlayers: PropTypes.func,
 	currentRound: PropTypes.number,
+	status: PropTypes.string,
 	playing: PropTypes.bool,
-	clickHandler: PropTypes.func
+	clickHandler: PropTypes.func,
 };

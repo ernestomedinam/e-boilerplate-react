@@ -2,9 +2,10 @@
     width: 2rem;
     height: 2rem;
     border-radius: 0.3rem; 
-    background-color: rgba($color: white, $alpha: 0.5);
-    .enabled:hover {
+    background-color: rgba($color: white, $alpha: 0.8);
+    &.enabled:hover {
         background-color: white;
+        cursor: pointer;
     }
     &::after, &::before {
         content: " ";

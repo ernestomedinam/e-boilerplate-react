@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 
-const About = props => {
+const About = (props) => {
 	return (
 		<Container className="text-center my-5">
 			<h1 className="display-3">{"About us"}</h1>

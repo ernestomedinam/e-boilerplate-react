@@ -11,6 +11,7 @@ $ npm run start // for local
 $ npm run gitpod // for gitpod
 ```
 ### features
+- `webpack` hot-reload working on `gitpod`
 - `react-bootstrap` integrated
 - Support for `async` functions
 - Ready-to-use view, to host time based rounds' contests

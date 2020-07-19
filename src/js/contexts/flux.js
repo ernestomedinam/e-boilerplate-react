@@ -5,21 +5,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 				"Hello dear user! I am not a smart app.",
 				"Hello, you're user number 1! As in the first, not the best...",
 				"Hey there, you're our visitor one thousand! Not really, sorry",
-				"Go code, go code, go code, go code!"
+				"Go code, go code, go code, go code!",
 			],
-			currentGreeting: 0
+			currentGreeting: 0,
 		},
 		actions: {
 			someFunction: () => {
 				console.log("hey, this is some function...");
 				console.log("a very lazy one, go code something!");
 			},
-			addGreeting: newGreeting => {
+			addGreeting: (newGreeting) => {
 				const store = getStore();
 				let greetings = store.greetings;
 				greetings.push(newGreeting);
 				setStore({
-					greetings: greetings
+					greetings: greetings,
 				});
 			},
 			changeCurrentGreeting: () => {
@@ -36,13 +36,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 						candidates.push(store.greetings[currentGreeting]);
 						setStore({
 							greetings: candidates,
-							currentGreeting: i
+							currentGreeting: i,
 						});
 						i = candidates.length;
 					}
 				}
-			}
-		}
+			},
+		},
 	};
 };
 

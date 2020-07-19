@@ -12,7 +12,6 @@ const options = {
     hot: true,
     open: true,
     contentBase: [paths.appAssets, paths.appPublic],
-    watchContentBase: true,
     historyApiFallback: true,
     after() {
         console.log(
