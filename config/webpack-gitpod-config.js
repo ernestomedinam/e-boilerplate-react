@@ -7,6 +7,11 @@ require("dotenv").config();
 module.exports = merge(common, {
     mode: "development",
     devtool: "cheap-module-source-map",
+    output: {
+        filename: "main.js",
+        path: paths.appPublic,
+        publicPath: "/"
+    },
     devServer: {
         allowedHosts: ["localhost", "0.0.0.0", ".gitpod.io"],
         host: "0.0.0.0",

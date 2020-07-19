@@ -7,12 +7,13 @@ tasks:
       gp await-port 3000
       git status
   - name: dev server
-    before: |
+    init: |
+      cp .env.example .env
+      npm install
+      npm audit fix
+    command: |
       sed "/PUBLIC/d" -i .env
       echo "PUBLIC=$(gp url 3000)/" >> .env
-    init: npm install
-    command: |
-      npm audit fix
       npm run gitpod
     openMode: tab-after
     
