@@ -7,7 +7,9 @@ const About = (props) => {
 	return (
 		<Container className="text-center my-5">
 			<h1 className="display-3">{"About us"}</h1>
-			<p>{"Welcome to the place where we talk about us!"}</p>
+			<p className="text-primary">
+				{"Welcome to the place where we talk about us!"}
+			</p>
 			<Link to="/" replace>
 				<Button variant="primary">{"Go home!"}</Button>
 			</Link>

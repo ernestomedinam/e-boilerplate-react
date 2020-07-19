@@ -2,6 +2,8 @@ const paths = require("./paths.js");
 const PrettierPlugin = require("prettier-webpack-plugin");
 const { merge } = require("webpack-merge");
 const common = require("./webpack-common.js");
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 require("dotenv").config();
 
 module.exports = merge(common, {
@@ -23,6 +25,8 @@ module.exports = merge(common, {
         public: process.env.PUBLIC
     },
     plugins: [
+        new FriendlyErrorsWebpackPlugin(),
+        new ErrorOverlayPlugin(),
         new PrettierPlugin({
             parser: "babel",
             printWidth: 80,
