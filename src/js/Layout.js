@@ -8,7 +8,6 @@ import loaderReducer, { initLoaderState } from "./reducers/loaderReducer";
 import Contest from "./views/Contest";
 
 const Layout = (props) => {
-	// const [viewIsReady, setViewIsReady] = useState(false);
 	const [state, dispatch] = useReducer(loaderReducer, initLoaderState);
 	useEffect(() => {
 		if (!state.viewIsReady) {

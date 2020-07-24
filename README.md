@@ -11,8 +11,8 @@ $ npm run start // for local
 $ npm run gitpod // for gitpod
 ```
 ### features
-- `webpack` hot-reload working on `gitpod`
-- `react-bootstrap` integrated
+- `react-hot-reload` working and supporting hooks
+- `react-bootstrap` set up and ready to use
 - Support for `async` functions
 - Ready-to-use view, to host time based rounds' contests
 - `flux` example implemented
