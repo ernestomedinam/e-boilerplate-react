@@ -1,3 +1,4 @@
+import { hot } from "react-hot-loader/root";
 import React, { useState, useEffect, useReducer } from "react";
 import Home from "./views/Home";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
@@ -36,4 +37,4 @@ const Layout = (props) => {
 	);
 };
 
-export default Layout;
+export default hot(Layout);

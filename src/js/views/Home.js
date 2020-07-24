@@ -8,7 +8,7 @@ const Home = (props) => {
 	const { store, actions } = useContext(AppContext);
 	return (
 		<Container className="text-center my-5">
-			<h1 className="display-3">Hey! Welcome to rEact!!</h1>
+			<h1 className="display-3">{"Hey! Welcome to rEact!!"}</h1>
 			<p className="test-p-class mb-4">
 				{"Color for this text if provided by this " +
 					"view's very own scss file."}
