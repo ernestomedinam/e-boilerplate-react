@@ -131,45 +131,51 @@ const Contest = (props) => {
 				)}
 			</div>
 			<div className="row">
-				<Form
-					id="newPlayer"
-					className="col-md-4"
-					onSubmit={(e) => {
-						e.preventDefault();
-						e.stopPropagation();
-						setPlayers([
-							...players,
-							{
-								id: players.length + 1,
-								name: newPlayer,
-								points: 0,
-							},
-						]);
-						setNewPlayer("");
-					}}
-				>
-					<Form.Group>
-						<Form.Control
-							disabled={stats.currentRound != 0}
-							type="input"
-							placeholder="Name"
-							value={newPlayer}
-							onChange={(e) => setNewPlayer(e.target.value)}
-						/>
-					</Form.Group>
-				</Form>
-				<div className="col-md-4 col-6 d-flex align-items-end justify-content-md-start justify-content-center">
-					<Button
-						form="newPlayer"
-						className="mb-3"
-						disabled={stats.currentRound != 0}
-						type="submit"
-						variant="primary"
-					>
-						{"Add player!"}
-					</Button>
-				</div>
-				<div className="col-md-4 col-6 d-flex align-items-end justify-content-center">
+				{stats.status == "planning" && (
+					<React.Fragment>
+						<Form
+							id="newPlayer"
+							className="col-md-4"
+							onSubmit={(e) => {
+								e.preventDefault();
+								e.stopPropagation();
+								setPlayers([
+									...players,
+									{
+										id: players.length + 1,
+										name: newPlayer,
+										points: 0,
+									},
+								]);
+								setNewPlayer("");
+							}}
+						>
+							<Form.Group>
+								<Form.Control
+									disabled={stats.currentRound != 0}
+									type="input"
+									placeholder="Name"
+									value={newPlayer}
+									onChange={(e) =>
+										setNewPlayer(e.target.value)
+									}
+								/>
+							</Form.Group>
+						</Form>
+						<div className="col-md-4 col-6 d-flex align-items-end justify-content-md-start justify-content-center">
+							<Button
+								form="newPlayer"
+								className="mb-3"
+								disabled={stats.currentRound != 0}
+								type="submit"
+								variant="primary"
+							>
+								{"Add player!"}
+							</Button>
+						</div>
+					</React.Fragment>
+				)}
+				<div className="col-md-4 col-6 d-flex align-items-end justify-content-center ml-auto">
 					{stats.currentRound == 0 ? (
 						<Button
 							className="mb-3"
