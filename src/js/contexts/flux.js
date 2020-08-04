@@ -8,12 +8,41 @@ const getState = ({ getStore, getActions, setStore }) => {
 				"Go code, go code, go code, go code!",
 			],
 			currentGreeting: 0,
+			queue: {
+				currentClient: "",
+				clients: [],
+			},
 		},
 		actions: {
-			someFunction: () => {
-				console.log("hey, this is some function...");
-				console.log("a very lazy one, go code something!");
+			setClientsQueue: (newQueue) => {
+				const store = getStore();
+				setStore({
+					queue: {
+						...store.queue,
+						clients: newQueue,
+					},
+				});
 			},
+			addClientToQueue: (newClient) => {
+				const store = getStore();
+				setStore({
+					queue: {
+						...store.queue,
+						clients: [...store.queue.clients, newClient],
+					},
+				});
+			},
+			changeCurrentClient: (newCurrentClient) => {
+				const store = getStore();
+				setStore({
+					queue: {
+						...store.queue,
+						currentClient: newCurrentClient || "",
+					},
+				});
+			},
+			nextAndQueue: () => {},
+			nextAndOut: () => {},
 			addGreeting: (newGreeting) => {
 				const store = getStore();
 				let greetings = store.greetings;

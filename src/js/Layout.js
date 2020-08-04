@@ -6,6 +6,7 @@ import About from "./views/About";
 import AppContextProvider from "./contexts/AppContext";
 import loaderReducer, { initLoaderState } from "./reducers/loaderReducer";
 import Contest from "./views/Contest";
+import { Queue } from "./views/Queue";
 
 const Layout = (props) => {
 	const [state, dispatch] = useReducer(loaderReducer, initLoaderState);
@@ -27,6 +28,10 @@ const Layout = (props) => {
 						<Route exact path="/" component={Home} />
 						<Route path="/about" component={About} />
 						<Route path="/contest" component={Contest} />
+						<Route path="/queue/admin">
+							<Queue admin />
+						</Route>
+						<Route path="/queue" component={Queue} />
 					</Switch>
 				) : (
 					<div className="view-loader"></div>
