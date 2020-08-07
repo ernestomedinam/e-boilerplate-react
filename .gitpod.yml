@@ -13,7 +13,7 @@ tasks:
       npm audit fix
     command: |
       sed "/PUBLIC/d" -i .env
-      echo "PUBLIC=$(gp url 3000)/" >> .env
+      echo "PUBLIC=$(gp url 3000)" >> .env
       npm run gitpod
     openMode: tab-after
     

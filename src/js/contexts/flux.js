@@ -1,3 +1,6 @@
+const url =
+	"https://3000-e0e05558-f87a-49f4-a938-da3019adbbef.ws-us02.gitpod.io/api/support-tickets";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -9,12 +12,78 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 			currentGreeting: 0,
 			queue: {
-				currentClient: "",
-				clients: [],
+				currentClient: null,
+				clients: null,
 			},
 		},
 		actions: {
-			setClientsQueue: (newQueue) => {
+			addTicket: async (nametag) => {
+				let response = await fetch(url, {
+					method: "POST",
+					body: JSON.stringify({ nametag }),
+					headers: {
+						"Content-Type": "application/json",
+					},
+				});
+				if (response.ok) {
+					// await actions.getQueue();
+					let ticket = await response.json();
+					console.log(
+						`ticket for ${ticket.nametag} added with id: ${ticket.id}`
+					);
+				} else {
+					alert(
+						`something went wrong creating new client: ${response.status}, ${response.statusText}`
+					);
+				}
+			},
+			getQueue: async () => {
+				let response = await fetch(url, {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+					},
+				});
+				if (response.ok) {
+					let queue = await response.json();
+					let sortedQueue = queue.sort((a, b) => {
+						if (a.created_at < b.created_at) return -1;
+						if (a.created_at > b.created_at) return 1;
+						return 0;
+					});
+					setStore({
+						queue: {
+							currentClient: sortedQueue[0] || "",
+							clients: sortedQueue.slice(1) || [],
+						},
+					});
+				} else {
+					alert(
+						`something went wrong getting current queue: ${response.status}, ${response.statusText}`
+					);
+				}
+			},
+			closeTicket: async (ticketId) => {
+				let response = await fetch(`${url}/${ticketId}`, {
+					method: "PUT",
+					body: JSON.stringify({}),
+					headers: {
+						"Content-Type": "application/json",
+					},
+				});
+				if (response.ok) {
+					// await actions.getQueue();
+					let ticket = await response.json();
+					console.log(
+						`ticket for ${ticket.nametag} closed at: ${ticket.closed_at}`
+					);
+				} else {
+					alert(
+						`something went wrong closing ticket: ${response.status}, ${response.statusText}`
+					);
+				}
+			},
+			setClientsQueue: async (newQueue) => {
 				const store = getStore();
 				setStore({
 					queue: {
