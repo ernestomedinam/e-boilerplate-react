@@ -1,12 +1,13 @@
 import React from "react";
 import { useState } from "react";
 import PropTypes from "prop-types";
-import { Table } from "react-bootstrap";
+import { Table, Button } from "react-bootstrap";
 import { useContext } from "react";
 import { AppContext } from "../contexts/AppContext";
 import { useEffect } from "react";
 import { useReducer } from "react";
 import loaderReducer, { initLoaderState } from "../reducers/loaderReducer";
+import { Link } from "react-router-dom";
 
 export const Queue = (props) => {
 	const { store, actions } = useContext(AppContext);
@@ -146,6 +147,11 @@ export const Queue = (props) => {
 								</div>
 							)}
 						</div>
+					</div>
+					<div className="row justify-content-end pr-3">
+						<Link to="/" replace>
+							<Button variant="primary">{"Go home!"}</Button>
+						</Link>
 					</div>
 				</>
 			) : (

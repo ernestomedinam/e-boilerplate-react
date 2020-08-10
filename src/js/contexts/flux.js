@@ -38,29 +38,45 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 			getQueue: async () => {
-				let response = await fetch(url, {
-					method: "GET",
-					headers: {
-						"Content-Type": "application/json",
-					},
-				});
-				if (response.ok) {
-					let queue = await response.json();
-					let sortedQueue = queue.sort((a, b) => {
-						if (a.created_at < b.created_at) return -1;
-						if (a.created_at > b.created_at) return 1;
-						return 0;
-					});
-					setStore({
-						queue: {
-							currentClient: sortedQueue[0] || "",
-							clients: sortedQueue.slice(1) || [],
+				try {
+					let response = await fetch(url, {
+						method: "GET",
+						headers: {
+							"Content-Type": "application/json",
 						},
 					});
-				} else {
-					alert(
-						`something went wrong getting current queue: ${response.status}, ${response.statusText}`
-					);
+					if (response.ok) {
+						let queue = await response.json();
+						let sortedQueue = queue.sort((a, b) => {
+							if (a.created_at < b.created_at) return -1;
+							if (a.created_at > b.created_at) return 1;
+							return 0;
+						});
+						setStore({
+							queue: {
+								currentClient: sortedQueue[0] || "",
+								clients: sortedQueue.slice(1) || [],
+							},
+						});
+					} else {
+						alert(
+							`something went wrong getting current queue: ${response.status}, ${response.statusText}`
+						);
+						setStore({
+							queue: {
+								currentClient: "",
+								clients: [],
+							},
+						});
+					}
+				} catch (error) {
+					alert(`error catched on fetch: ${error}`);
+					setStore({
+						queue: {
+							currentClient: "",
+							clients: [],
+						},
+					});
 				}
 			},
 			closeTicket: async (ticketId) => {
