@@ -14,6 +14,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			queue: {
 				currentClient: null,
 				clients: null,
+				updatedAt: null,
 			},
 		},
 		actions: {
@@ -56,6 +57,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 							queue: {
 								currentClient: sortedQueue[0] || "",
 								clients: sortedQueue.slice(1) || [],
+								updatedAt: new Date().toLocaleString(),
 							},
 						});
 					} else {

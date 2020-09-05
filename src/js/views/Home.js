@@ -24,7 +24,7 @@ const Home = (props) => {
 					{"Go contest!"}
 				</Button>
 			</Link>
-			<Link to="/queue/admin">
+			<Link to="/queue">
 				<Button variant="warning" className="mx-2">
 					{"Support queue!"}
 				</Button>

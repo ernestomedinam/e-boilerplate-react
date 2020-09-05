@@ -1,4 +1,5 @@
 import { hot } from "react-hot-loader/root";
+import PropTypes from "prop-types";
 import React, { useState, useEffect, useReducer } from "react";
 import Home from "./views/Home";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
@@ -28,9 +29,6 @@ const Layout = (props) => {
 						<Route exact path="/" component={Home} />
 						<Route path="/about" component={About} />
 						<Route path="/contest" component={Contest} />
-						<Route path="/queue/admin">
-							<Queue admin />
-						</Route>
 						<Route path="/queue" component={Queue} />
 					</Switch>
 				) : (

@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { useReducer } from "react";
 import loaderReducer, { initLoaderState } from "../reducers/loaderReducer";
 import { Link } from "react-router-dom";
+import useInterval from "../components/useInterval";
 
 export const Queue = (props) => {
 	const { store, actions } = useContext(AppContext);
@@ -24,6 +25,9 @@ export const Queue = (props) => {
 			prepareView();
 		}
 	}, [actions, store.queue.clients]);
+	useInterval(() => {
+		actions.getQueue();
+	}, 30000);
 	return (
 		<div className="container pt-3">
 			{loader.viewIsReady ? (
@@ -62,13 +66,6 @@ export const Queue = (props) => {
 											await actions.addTicket(newClient);
 											setNewClient("");
 											await actions.getQueue();
-											// if (store.queue.currentClient == "") {
-											// 	actions.changeCurrentClient(newClient);
-											// 	setNewClient("");
-											// } else {
-											// 	actions.addClientToQueue(newClient);
-											// 	setNewClient("");
-											// }
 										}
 									}}
 								/>
@@ -77,7 +74,7 @@ export const Queue = (props) => {
 					)}
 					<div className="row justify-content-center my-5">
 						<div className="col-10">
-							<Table striped bordered>
+							<Table striped bordered className="mb-0">
 								<thead className="text-white">
 									<tr>
 										<th>{"Current queue"}</th>
@@ -93,6 +90,12 @@ export const Queue = (props) => {
 									})}
 								</tbody>
 							</Table>
+							<p className="text-secondary mt-1 text-right">
+								<small>
+									{store.queue.updatedAt &&
+										`last updated at ${store.queue.updatedAt}`}
+								</small>
+							</p>
 							{props.admin && (
 								<div className="row justify-content-center my-5">
 									<button
@@ -109,19 +112,6 @@ export const Queue = (props) => {
 													.nametag
 											);
 											await actions.getQueue();
-											// for now only fifo
-											// if (clients.length > 0) {
-											// 	const newCurrent =
-											// 		store.queue.clients[0];
-											// 	const newClients = store.queue.clients.filter(
-											// 		(client, index) => index != 0
-											// 	);
-											// 	actions.setClientsQueue([
-											// 		...newClients,
-											// 		currentClient,
-											// 	]);
-											// 	actions.changeCurrentClient(newCurrent);
-											// }
 										}}
 									>
 										{"Next and to the end"}
@@ -134,12 +124,6 @@ export const Queue = (props) => {
 												store.queue.currentClient.id
 											);
 											await actions.getQueue();
-											// const newCurrent = clients[0];
-											// const newClients = clients.filter(
-											// 	(client, index) => index != 0
-											// );
-											// actions.setClientsQueue(newClients);
-											// actions.changeCurrentClient(newCurrent);
 										}}
 									>
 										{"Next and out"}
@@ -148,10 +132,20 @@ export const Queue = (props) => {
 							)}
 						</div>
 					</div>
-					<div className="row justify-content-end pr-3">
-						<Link to="/" replace>
-							<Button variant="primary">{"Go home!"}</Button>
-						</Link>
+					<div className="row justify-content-center pr-3">
+						{!props.admin ? (
+							<Button
+								variant="success"
+								onClick={async (e) => await actions.getQueue()}
+								className={"mx-4"}
+							>
+								{"Update list"}
+							</Button>
+						) : (
+							<Link to="/" replace className={"ml-auto"}>
+								<Button variant="primary">{"Go home!"}</Button>
+							</Link>
+						)}
 					</div>
 				</>
 			) : (
