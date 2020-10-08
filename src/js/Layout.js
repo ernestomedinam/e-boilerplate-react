@@ -29,7 +29,10 @@ const Layout = (props) => {
 						<Route exact path="/" component={Home} />
 						<Route path="/about" component={About} />
 						<Route path="/contest" component={Contest} />
-						<Route path="/queue" component={Queue} />
+						<Route exact path="/queue" component={Queue} />
+						<Route path="/admin/queue">
+							<Queue admin={true} />
+						</Route>
 					</Switch>
 				) : (
 					<div className="view-loader"></div>
